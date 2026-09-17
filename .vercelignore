@@ -1,6 +1,5 @@
 /vendor
 /node_modules
-/frontend
 /tests
 /.env
 /storage/framework/cache/data/*
