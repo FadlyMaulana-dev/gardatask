@@ -2,21 +2,26 @@
     "version": 2,
     "builds": [
         {
+            "src": "frontend/package.json",
+            "use": "@vercel/static-build",
+            "config": { "distDir": "dist" }
+        },
+        {
             "src": "api/index.php",
             "use": "vercel-php@0.9.0"
         }
     ],
     "routes": [
         {
-            "src": "/(.*)",
+            "src": "/api/(.*)",
             "dest": "/api/index.php"
+        },
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
         }
-    ],
-    "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "CACHE_DRIVER": "array",
-        "SESSION_DRIVER": "cookie",
-        "QUEUE_DRIVER": "sync"
-    }
+    ]
 }
